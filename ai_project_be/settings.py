@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w4r)q!+o4l_0%g-hbys!mqcc^=#!l@1-(gg374b(mmyl8n27t2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://ai-project-planner-be-72e73912044c.herokuapp.com/']
 
 
 # Application definition
