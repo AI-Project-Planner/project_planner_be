@@ -1,6 +1,6 @@
 asgiref==3.7.2
 sqlparse==0.4.4
-dotenv==1.0.0
+django-dotenv==1.4.2
 django>=4.2.4,<5.0
 gunicorn>=21.2,<22.0
 dj-database-url>=2.0,<3.0
