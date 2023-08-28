@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w4r)q!+o4l_0%g-hbys!mqcc^=#!l@1-(gg374b(mmyl8n27t2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://ai-project-planner-be-72e73912044c.herokuapp.com/']
+ALLOWED_HOSTS = ['https://ai-project-planner-be-72e73912044c.herokuapp.com/', '127.0.0.1']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'user',
 ]
 
 MIDDLEWARE = [
