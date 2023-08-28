@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'user',
     'coverage',
     'project',
+    'dotenv'
 ]
 
 MIDDLEWARE = [
