@@ -23,3 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/users/<int:id>/projects/', views.generate_project)
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)

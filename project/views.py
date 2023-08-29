@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework import status
 import code, requests, json, dotenv, os
 
+@api_view(['POST'])
 def generate_project(request, id):
     # Find user
     # if user is nil, return error
@@ -16,7 +17,7 @@ def generate_project(request, id):
     parsed_request = json.loads(request.body)
     technologies = parsed_request['technologies']
     timeline = parsed_request['time']
-    timeline_split = parsed_request['time'].split()
+    timeline_split = parsed_request['time'].split()[-1]
     collaborators = parsed_request['collaborators']
     stack = parsed_request['type']
 
@@ -36,16 +37,8 @@ def generate_project(request, id):
     headers = { 'Authorization': os.environ['OPEN_API_KEY'] }
     response = requests.post('https://api.openai.com/v1/chat/completions', json=payload, headers=headers)
 
-    # Question: how to rescue from errors when we can't parse the object the OpenAI returned
-    ## Errors could potentially happen when the api doesn't close their json
-    ## syntax: try, except
-    ## Question about how and what to test?
-    ### end to end testing, setting up a mock server to show the fulll request/repsonse
-    # Question: how to test that our serializer is returning everything we are obliged to per the json contract
-    # Question: how to setup more robust CircleCI integration instead of just 'build'
-
     parsed = response.json()
-    #if response status code = 200 then...
+    # refactor: error handling: if response status code = 200 then...
     project = parsed['choices'][0]['message']['content']
     parsed_project = json.loads(project)
 
@@ -58,6 +51,8 @@ def generate_project(request, id):
     colors = "\n".join(parsed_project['ColorPalette'])
 
     # From the request, we need to save the timeline_split and collaborators to the DB entry
+    project = Project.objects.create(name=name, description=description, steps=steps, features=features, interactions=interactions, colors=colors, user_id=user, collaborators=collaborators, timeline=timeline_split, tagline=tagline)
 
-    # Project.objects.create(name=name, description=description, steps=steps, features=features, interactions=interactions, colors=colors)
-    # code.interact(local=dict(globals(), **locals()))
+    # Serialize the project
+    serializer = ProjectSerializer(project)
+    return Response(Project.serialize_project(serializer, project.id), status=status.HTTP_200_OK)
