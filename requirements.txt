@@ -1,6 +1,7 @@
 asgiref==3.7.2
 astroid==2.15.6
 click==8.1.7
+coverage==7.3.0
 dill==0.3.7
 Django==4.2.4
 django-dotenv==1.4.2
@@ -15,6 +16,11 @@ python-dotenv==1.0.0
 sqlparse==0.4.4
 tomlkit==0.12.1
 wrapt==1.15.0
+
+##Alternative to dotenv
+# PyYAML==6.0
+
+# Previous
 # asgiref==3.7.2
 # sqlparse==0.4.4
 # django-dotenv==1.4.2
