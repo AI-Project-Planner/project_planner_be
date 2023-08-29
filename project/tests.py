@@ -31,19 +31,44 @@ class ProjectModelTest(TestCase):
         self.assertEqual(self.p.saved, False)
 
     def test_project_is_returned(self):
-        response = c.get(f"/api/v1/projects/{p.id}/")
+        payload = {
+            "type": "frontend",
+            "technologies": "react, typescript and javascript",
+            "time": "1 week",
+            "collaborators": 2
+        }
+        # payload = {
+        # "model": "gpt-3.5-turbo-16k",
+        # "messages": [
+        #         {
+        #         "role": "user",
+        #         "content": "Create a plan for a full stack application using react, typescript, and express. I have 60 days to build this application. Include additional feature ideas that the application could have. There will be 8 people working on this project.",
+        #         "role": "system",
+        #         "content": "In this plan, please include a name for the application, a schedule for project completion, a plan for how the users would interact with the application, and provide an example interaction. Include a color palette with 6 colors for this app. Provide your new response in JSON format with the following Keys: ProjectName, Description, Steps, Features, Interactions, ColorPalette, and Tagline. Tagline should be a five word summary of the project description. Steps, Features, Interaction and ColorPalette values should come back as an array. Any value inside of an array should not be numbered."
+        #         }
+        #     ]
+        # }
+
+        response = c.post(f"/api/v1/users/{self.u.id}/projects/", data=payload, content_type='application/json')
         self.assertEqual(response.status_code, 200)
 
         returned_project = json.loads(response.content)["data"]
-
-        payload = {
-        "model": "gpt-3.5-turbo-16k",
-        "messages": [
-                {
-                "role": "user",
-                "content": "Create a plan for a full stack application using react, typescript, and express. I have 60 days to build this application. Include additional feature ideas that the application could have. There will be 8 people working on this project.",
-                "role": "system",
-                "content": "In this plan, please include a name for the application, a schedule for project completion, a plan for how the users would interact with the application, and provide an example interaction. Include a color palette with 6 colors for this app. Provide your new response in JSON format with the following Keys: ProjectName, Description, Steps, Features, Interactions, ColorPalette, and Tagline. Tagline should be a five word summary of the project description. Steps, Features, Interaction and ColorPalette values should come back as an array. Any value inside of an array should not be numbered."
-                }
-            ]
+        # code.interact(local=dict(globals(), **locals()))
+        mock_response = {
+            "id": "1",
+            "type": "project",
+            "attributes": {
+                "name": "TaskMaster Pro",
+                "steps": "Project Setup: Create Git repository and define project structure\nBackend Setup: Develop Express.js application, set up API routes\nDatabase Design: Design and implement database schema",
+                "description": "TaskMaster Pro is an all-inclusive task management application designed to optimize team collaboration and productivity.",
+                "features": "User registration and login\nCreate, assign, update, and track tasks\nReal-time collaboration and updates\nPriority-based task categorization",
+                "interactions": "User logs in to TaskMaster Pro account.\nDashboard displays tasks by priority: High, Medium, Low.\nUser adds a task, assigns it, and sets a due date.\nTask appears under the respective priority category.\nAssigned user starts task, status updates in real-time.\nUpon completion, task is marked as done and updates for all.",
+                "colors": "#3498DB\n#27AE60\n#F39C12\n#F0F3F4\n#333333\n#E74C3C",
+                "saved": false,
+                "tagline": "Stay organized and track progress",
+                "collaborators": 2,
+                "timeline": "days",
+                "user_id": 1
+            }
         }
+
