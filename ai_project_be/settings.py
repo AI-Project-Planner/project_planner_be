@@ -25,18 +25,21 @@ SECRET_KEY = 'django-insecure-w4r)q!+o4l_0%g-hbys!mqcc^=#!l@1-(gg374b(mmyl8n27t2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://ai-project-planner-be-72e73912044c.herokuapp.com/']
+ALLOWED_HOSTS = ['https://ai-project-planner-be-72e73912044c.herokuapp.com/', '*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'user',
+    'project',
 ]
 
 MIDDLEWARE = [
