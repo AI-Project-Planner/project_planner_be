@@ -33,7 +33,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 ##---Hide ENV variables---##
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://ai-project-planner-be-72e73912044c.herokuapp.com/', '127.0.0.1']
 
