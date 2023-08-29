@@ -13,3 +13,13 @@ class Project(models.Model):
     tagline = models.TextField(max_length=2000)
     collaborators = models.PositiveSmallIntegerField(default=0)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def serialize_project(serializer, project_id):
+        return {
+                    "data":
+                    {
+                        "id": f"{project_id}",
+                        "type": "project",
+                        "attributes": serializer.data,
+                    }
+                }

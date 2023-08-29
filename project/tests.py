@@ -1,11 +1,14 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from .models import Project
 from user.models import User
+import json, code
 
 class ProjectModelTest(TestCase):
     def setUp(self):
         self.u = User.objects.create(name='Taylor Swift', email='erastour@gmail.com')
         self.p = Project.objects.create(user_id=self.u, name='Eras Tour', description='Greatest concert on the planet', steps='Lights, camera, action!', colors='Black', features='Fire, Fireworks, slay', interactions='Get tickets, go to concert, scream', timeline='days', tagline='Best Concert Eva!!!', collaborators=2)
+        global c
+        c = Client()
 
     def test_project_model_exists(self):
         projects = Project.objects.count()
@@ -26,3 +29,38 @@ class ProjectModelTest(TestCase):
         self.assertEqual(self.p.collaborators, 2)
 
         self.assertEqual(self.p.saved, False)
+
+    def test_project_is_returned(self):
+        payload = {
+            "type": "frontend",
+            "technologies": "react, typescript and javascript",
+            "time": "1 week",
+            "collaborators": 2
+        }
+
+        response = c.post(f"/api/v1/users/{self.u.id}/projects/", data=payload, content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data')
+        self.assertContains(response, 'id')
+        self.assertContains(response, 'type')
+        self.assertContains(response, 'attributes')
+        self.assertContains(response, 'user_id')
+        self.assertContains(response, 'name')
+        self.assertContains(response, 'description')
+        self.assertContains(response, 'features')
+        self.assertContains(response, 'interactions')
+        self.assertContains(response, 'colors')
+        self.assertContains(response, 'saved')
+        self.assertContains(response, 'tagline')
+        self.assertContains(response, 'timeline')
+
+    def test_project_is_not_returned(self):
+        payload = {
+            "type": "frontend",
+            "technologies": "react, typescript and javascript",
+            "time": "1 week",
+            "collaborators": 2
+        }
+
+        response = c.post("/api/v1/users/-1/projects/", data=payload, content_type='application/json')
+        self.assertEqual(response.status_code, 404)
