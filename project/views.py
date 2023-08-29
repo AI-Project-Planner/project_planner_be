@@ -10,8 +10,15 @@ import code, requests, json, dotenv, os
 @api_view(['POST'])
 def generate_project(request, id):
     # Find user
-    # if user is nil, return error
-    user = User.objects.get(id=id)
+    try:
+        user = User.objects.get(id=id)
+
+    except User.DoesNotExist:
+        response = {
+            "Error": "User ID not found",
+            "Status": 404
+        }
+        return Response(response, status=status.HTTP_404_NOT_FOUND)
 
     # Parse request
     parsed_request = json.loads(request.body)
@@ -37,22 +44,32 @@ def generate_project(request, id):
     headers = { 'Authorization': os.environ['OPEN_API_KEY'] }
     response = requests.post('https://api.openai.com/v1/chat/completions', json=payload, headers=headers)
 
-    parsed = response.json()
-    # refactor: error handling: if response status code = 200 then...
-    project = parsed['choices'][0]['message']['content']
-    parsed_project = json.loads(project)
+    if response.status_code==200:
+        # refactor: error handling: if response status code = 200 then...
+        parsed = response.json()
+        project = parsed['choices'][0]['message']['content']
+        parsed_project = json.loads(project)
 
-    name = parsed_project['ProjectName']
-    description = parsed_project['Description']
-    tagline = parsed_project['Tagline']
-    steps = "\n".join(parsed_project['Steps'])
-    features = "\n".join(parsed_project['Features'])
-    interactions = "\n".join(parsed_project['Interactions'])
-    colors = "\n".join(parsed_project['ColorPalette'])
+        name = parsed_project['ProjectName']
+        description = parsed_project['Description']
+        tagline = parsed_project['Tagline']
+        steps = "\n".join(parsed_project['Steps'])
+        features = "\n".join(parsed_project['Features'])
+        interactions = "\n".join(parsed_project['Interactions'])
+        colors = "\n".join(parsed_project['ColorPalette'])
 
-    # From the request, we need to save the timeline_split and collaborators to the DB entry
-    project = Project.objects.create(name=name, description=description, steps=steps, features=features, interactions=interactions, colors=colors, user_id=user, collaborators=collaborators, timeline=timeline_split, tagline=tagline)
+        # From the request, we need to save the timeline_split and collaborators to the DB entry
+        project = Project.objects.create(name=name, description=description, steps=steps, features=features, interactions=interactions, colors=colors, user_id=user, collaborators=collaborators, timeline=timeline_split, tagline=tagline)
 
-    # Serialize the project
-    serializer = ProjectSerializer(project)
-    return Response(Project.serialize_project(serializer, project.id), status=status.HTTP_200_OK)
+        # Serialize the project
+        serializer = ProjectSerializer(project)
+        return Response(Project.serialize_project(serializer, project.id), status=status.HTTP_200_OK)
+    else:
+        response = {
+            "Error": "Server is Down",
+            "Status": 503
+        }
+        return Response(response, status=status.HTTP_503_SERVICE_UNAVAILABLE)
+
+
+

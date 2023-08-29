@@ -53,3 +53,14 @@ class ProjectModelTest(TestCase):
         self.assertContains(response, 'saved')
         self.assertContains(response, 'tagline')
         self.assertContains(response, 'timeline')
+
+    def test_project_is_not_returned(self):
+        payload = {
+            "type": "frontend",
+            "technologies": "react, typescript and javascript",
+            "time": "1 week",
+            "collaborators": 2
+        }
+
+        response = c.post("/api/v1/users/-1/projects/", data=payload, content_type='application/json')
+        self.assertEqual(response.status_code, 404)
