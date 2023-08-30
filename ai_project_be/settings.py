@@ -93,7 +93,7 @@ DATABASES = {
         'USER': 'ai_project_be',
         'PASSWORD': 'ai_project_be',
         'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'PORT': '5433',
     }
 }
 
