@@ -21,8 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 ##---Hide ENV variables---##
-import os
 import dotenv
+import os
 
 dotenv_file = os.path.join(BASE_DIR, ".env")
 if os.path.isfile(dotenv_file):
@@ -88,8 +88,12 @@ WSGI_APPLICATION = 'ai_project_be.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ai_project_be',
+        'USER': 'ai_project_be',
+        'PASSWORD': 'ai_project_be',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
