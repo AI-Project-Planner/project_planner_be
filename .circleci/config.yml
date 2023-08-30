@@ -4,6 +4,13 @@ jobs:
   build:
     docker:
       - image: cimg/python:3.11.4
+      - image: cimg/postgres:14.9
+        environment:
+          POSTGRES_USER: ai_project_be
+          POSTGRES_PASSWORD: ai_project_be
+          POSTGRES_DB: ai_project_be
+        ports:
+          - 5432:5432
     steps:
       - checkout
       - restore_cache:
