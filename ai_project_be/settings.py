@@ -92,8 +92,8 @@ DATABASES = {
         'NAME': 'ai_project_be',
         'USER': 'ai_project_be',
         'PASSWORD': 'ai_project_be',
-        'HOST': 'db',
-        'PORT': '5433',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
