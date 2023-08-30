@@ -41,22 +41,13 @@ IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
 if not IS_HEROKU_APP:
     DEBUG = True
 
-# # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
-
 if IS_HEROKU_APP:
     ALLOWED_HOSTS = ["*"]
 else:
     ALLOWED_HOSTS = []
-# ALLOWED_HOSTS = ['https://ai-project-planner-be-72e73912044c.herokuapp.com/', '127.0.0.1']
-# Restrict CORS access for all domains pre-deployment
+
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ALLOWED_ORIGINS = [
-  'http://localhost:5001',
-  'http://localhost:19000',
-#   'https://flight-log-ui-hjawad22-flightlog.vercel.app',
-  'https://ai-project-planner-be-72e73912044c.herokuapp.com/'
-]
+CORS_ALLOWED_ORIGINS = ['*']
 
 # Application definition
 
@@ -105,13 +96,6 @@ WSGI_APPLICATION = 'ai_project_be.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 import dj_database_url
 if IS_HEROKU_APP:
     # In production on Heroku the database configuration is derived from the `DATABASE_URL`
@@ -136,16 +120,6 @@ else:
             "NAME": BASE_DIR / "db.sqlite3",
         }
     }
-    # DATABASES = {
-    #     'default': {
-    #         'ENGINE': 'django.db.backends.postgresql',
-    #         'NAME': 'ai_project_be',
-    #         'USER': 'ai_project_be',
-    #         'PASSWORD': 'ai_project_be',
-    #         'HOST': 'localhost',
-    #         'PORT': '5432',
-    #     }
-    # }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

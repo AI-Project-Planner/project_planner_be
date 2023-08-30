@@ -17,11 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
-from project import views
+from project import views as project_views
+from user import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/users/<int:id>/projects/', views.generate_project)
+    path('api/v1/users/', user_views.generate_user),
+    path('api/v1/users/<int:id>/', user_views.show_user),
+    path('api/v1/users/<int:id>/projects/', project_views.generate_project),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
