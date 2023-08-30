@@ -32,11 +32,31 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = os.environ['SECRET_KEY']
 ##---Hide ENV variables---##
 
+# The `DYNO` env var is set on Heroku CI, but it's not a real Heroku app, so we have to
+# also explicitly exclude CI:
+# https://devcenter.heroku.com/articles/heroku-ci#immutable-environment-variables
+IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+if not IS_HEROKU_APP:
+    DEBUG = True
 
-ALLOWED_HOSTS = ['https://ai-project-planner-be-72e73912044c.herokuapp.com/', '127.0.0.1']
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = False
 
+if IS_HEROKU_APP:
+    ALLOWED_HOSTS = ["*"]
+else:
+    ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['https://ai-project-planner-be-72e73912044c.herokuapp.com/', '127.0.0.1']
+# Restrict CORS access for all domains pre-deployment
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ALLOWED_ORIGINS = [
+  'http://localhost:5001',
+  'http://localhost:19000',
+#   'https://flight-log-ui-hjawad22-flightlog.vercel.app',
+  'https://ai-project-planner-be-72e73912044c.herokuapp.com/'
+]
 
 # Application definition
 
@@ -86,13 +106,46 @@ WSGI_APPLICATION = 'ai_project_be.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+import dj_database_url
+if IS_HEROKU_APP:
+    # In production on Heroku the database configuration is derived from the `DATABASE_URL`
+    # environment variable by the dj-database-url package. `DATABASE_URL` will be set
+    # automatically by Heroku when a database addon is attached to your Heroku app. See:
+    # https://devcenter.heroku.com/articles/provisioning-heroku-postgres
+    # https://github.com/jazzband/dj-database-url
+    DATABASES = {
+        "default": dj_database_url.config(
+            default=os.environ['DATABASE_URL'],
+            conn_max_age=600,
+            conn_health_checks=True,
+            ssl_require=True,
+        ),
     }
-}
-
+else:
+    # When running locally in development or in CI, a sqlite database file will be used instead
+    # to simplify initial setup. Longer term it's recommended to use Postgres locally too.
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.postgresql',
+    #         'NAME': 'ai_project_be',
+    #         'USER': 'ai_project_be',
+    #         'PASSWORD': 'ai_project_be',
+    #         'HOST': 'localhost',
+    #         'PORT': '5432',
+    #     }
+    # }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
