@@ -7,13 +7,14 @@ class ProjectModelTest(TestCase):
     def setUp(self):
         self.u = User.objects.create(name='Taylor Swift', email='erastour@gmail.com')
         self.p = Project.objects.create(user_id=self.u, name='Eras Tour', description='Greatest concert on the planet', steps='Lights, camera, action!', colors='Black', features='Fire, Fireworks, slay', interactions='Get tickets, go to concert, scream', timeline='days', tagline='Best Concert Eva!!!', collaborators=2)
+        self.q = Project.objects.create(user_id=self.u, saved=True, name='Eras Tour', description='Greatest concert on the planet', steps='Lights, camera, action!', colors='Black', features='Fire, Fireworks, slay', interactions='Get tickets, go to concert, scream', timeline='days', tagline='Best Concert Eva!!!', collaborators=2)
         global c
         c = Client()
 
     def test_project_model_exists(self):
         projects = Project.objects.count()
 
-        self.assertEqual(projects, 1)
+        self.assertEqual(projects, 2)
 
     def test_project_model_has_attributes(self):
         self.assertEqual(self.p.user_id, self.u)
@@ -98,4 +99,12 @@ class ProjectModelTest(TestCase):
         }
 
         response = c.post(f"/api/v1/users/-1/projects/", data=payload, content_type='application/json')
+        self.assertEqual(response.status_code, 404)
+
+    def test_get_all_users_projects(self):
+        response = c.get(f"/api/v1/users/{self.u.id}/projects/")
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_all_users_projects_user_not_found(self):
+        response = c.get(f"/api/v1/users/-1/projects/")
         self.assertEqual(response.status_code, 404)

@@ -23,3 +23,27 @@ class Project(models.Model):
                         "attributes": serializer.data,
                     }
                 }
+
+    def serialize_all_projects(projects):
+        array = []
+        for x in projects:
+            z = {
+                "id": f"{x.id}",
+                "type": "project",
+                "attributes":
+                    {
+                        "name": f"{x.name}",
+                        "steps": f"{x.steps}",
+                        "description": f"{x.description}",
+                        "features": f"{x.features}",
+                        "interactions": f"{x.interactions}",
+                        "colors": f"{x.colors}",
+                        "timeline": f"{x.timeline}",
+                        "saved": f"{x.saved}",
+                        "tagline": f"{x.tagline}",
+                        "collaborators": f"{x.collaborators}",
+                        "user_id": f"{x.user_id.id}"
+                    }
+            }
+            array.append(z)
+        return { "data": array }
