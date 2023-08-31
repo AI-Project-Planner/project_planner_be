@@ -1,10 +1,9 @@
-from django.shortcuts import render, get_object_or_404
 from .models import User
 from .serializers import UserSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-import code, requests, json, dotenv, os
+import json
 
 @api_view(['GET'])
 def show_user(request, id):

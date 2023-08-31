@@ -1,12 +1,10 @@
-from django.shortcuts import render, get_object_or_404
 from .models import Project
 from user.models import User
 from .serializers import ProjectSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-import code, requests, json, dotenv, os
-from django.http import JsonResponse
+import requests, json, os
 
 @api_view(['GET', 'POST'])
 def generate_project(request, id):
