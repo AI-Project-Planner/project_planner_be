@@ -27,6 +27,7 @@ def generate_project(request, id):
         technologies = parsed_request['technologies']
         timeline = parsed_request['time']
         timeline_split = parsed_request['time'].split()[-1]
+        timeline_integer = parsed_request['time'].split()[0]
         collaborators = parsed_request['collaborators']
         stack = parsed_request['type']
 
@@ -61,7 +62,7 @@ def generate_project(request, id):
             colors = "\n".join(parsed_project['ColorPalette'])
 
             # From the request, we need to save the timeline_split and collaborators to the DB entry
-            project = Project.objects.create(name=name, description=description, steps=steps, features=features, interactions=interactions, colors=colors, user_id=user, collaborators=collaborators, timeline=timeline_split, tagline=tagline)
+            project = Project.objects.create(name=name, description=description, steps=steps, features=features, interactions=interactions, colors=colors, user_id=user, collaborators=collaborators, timeline=timeline_split, timeline_int=timeline_integer, tagline=tagline)
 
             # Serialize the project
             serializer = ProjectSerializer(project)

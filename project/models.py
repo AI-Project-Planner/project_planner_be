@@ -9,6 +9,7 @@ class Project(models.Model):
     interactions = models.TextField(max_length=2000)
     colors = models.TextField(max_length=2000)
     timeline = models.CharField(max_length=6)
+    timeline_int = models.PositiveSmallIntegerField(default=0)
     saved = models.BooleanField(default=False)
     tagline = models.TextField(max_length=2000)
     collaborators = models.PositiveSmallIntegerField(default=0)
@@ -39,6 +40,7 @@ class Project(models.Model):
                         "interactions": f"{x.interactions}",
                         "colors": f"{x.colors}",
                         "timeline": f"{x.timeline}",
+                        "timeline_int": f"{x.timeline_int}",
                         "saved": f"{x.saved}",
                         "tagline": f"{x.tagline}",
                         "collaborators": f"{x.collaborators}",

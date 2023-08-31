@@ -6,8 +6,8 @@ import json, code
 class ProjectModelTest(TestCase):
     def setUp(self):
         self.u = User.objects.create(name='Taylor Swift', email='erastour@gmail.com')
-        self.p = Project.objects.create(user_id=self.u, name='Eras Tour', description='Greatest concert on the planet', steps='Lights, camera, action!', colors='Black', features='Fire, Fireworks, slay', interactions='Get tickets, go to concert, scream', timeline='days', tagline='Best Concert Eva!!!', collaborators=2)
-        self.q = Project.objects.create(user_id=self.u, saved=True, name='Eras Tour', description='Greatest concert on the planet', steps='Lights, camera, action!', colors='Black', features='Fire, Fireworks, slay', interactions='Get tickets, go to concert, scream', timeline='days', tagline='Best Concert Eva!!!', collaborators=2)
+        self.p = Project.objects.create(user_id=self.u, name='Eras Tour', description='Greatest concert on the planet', steps='Lights, camera, action!', colors='Black', features='Fire, Fireworks, slay', interactions='Get tickets, go to concert, scream', timeline='days', timeline_int=1, tagline='Best Concert Eva!!!', collaborators=2)
+        self.q = Project.objects.create(user_id=self.u, saved=True, name='Eras Tour', description='Greatest concert on the planet', steps='Lights, camera, action!', colors='Black', features='Fire, Fireworks, slay', interactions='Get tickets, go to concert, scream', timeline='days', timeline_int=5, tagline='Best Concert Eva!!!', collaborators=2)
         global c
         c = Client()
 
@@ -54,6 +54,7 @@ class ProjectModelTest(TestCase):
         self.assertContains(response, 'saved')
         self.assertContains(response, 'tagline')
         self.assertContains(response, 'timeline')
+        self.assertContains(response, 'timeline_int')
 
     def test_project_is_not_returned(self):
         payload = {
