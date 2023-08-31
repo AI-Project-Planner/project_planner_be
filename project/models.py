@@ -9,7 +9,7 @@ class Project(models.Model):
     interactions = models.TextField(max_length=2000)
     colors = models.TextField(max_length=2000)
     timeline = models.CharField(max_length=6)
-    saved = models.BooleanField(default = False)
+    saved = models.BooleanField(default=False)
     tagline = models.TextField(max_length=2000)
     collaborators = models.PositiveSmallIntegerField(default=0)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
