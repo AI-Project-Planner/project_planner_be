@@ -64,3 +64,38 @@ class ProjectModelTest(TestCase):
 
         response = c.post("/api/v1/users/-1/projects/", data=payload, content_type='application/json')
         self.assertEqual(response.status_code, 404)
+
+    def test_project_is_updated(self):
+        payload = {
+            "saved": "true"
+        }
+
+        response = c.patch(f"/api/v1/users/{self.u.id}/projects/{self.p.id}/", data=payload, content_type='application/json')
+        self.assertEqual(response.status_code, 202)
+
+    def test_project_cant_be_updated_user_id(self):
+        payload = {
+            "saved": "true"
+        }
+
+        response = c.patch(f"/api/v1/users/-1/projects/{self.p.id}/", data=payload, content_type='application/json')
+        self.assertEqual(response.status_code, 404)
+
+    def test_project_cant_be_updated_project_id(self):
+        payload = {
+            "saved": "true"
+        }
+
+        response = c.patch(f"/api/v1/users/{self.u.id}/projects/-1/", data=payload, content_type='application/json')
+        self.assertEqual(response.status_code, 404)
+
+    def test_project_cant_be_generated(self):
+        payload = {
+            "type": "frontend",
+            "technologies": "react, typescript and javascript",
+            "time": "1 week",
+            "collaborators": 2
+        }
+
+        response = c.post(f"/api/v1/users/-1/projects/", data=payload, content_type='application/json')
+        self.assertEqual(response.status_code, 404)

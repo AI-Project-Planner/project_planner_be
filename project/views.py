@@ -71,5 +71,23 @@ def generate_project(request, id):
         }
         return Response(response, status=status.HTTP_503_SERVICE_UNAVAILABLE)
 
-
-
+@api_view(['PATCH'])
+def update_project(request, user_id, project_id):
+    try:
+        project = Project.objects.get(id=project_id)
+    except Project.DoesNotExist:
+        response = {
+            "Error": "Project or User ID not found",
+            "Status": 404
+        }
+        return Response(response, status=status.HTTP_404_NOT_FOUND)
+    parsed_request = json.loads(request.body)
+    saved_status = parsed_request['saved']
+    if saved_status=='true':
+        saved_status=True
+    elif saved_status=='false':
+        saved_status=False
+    project.saved=saved_status
+    project.save()
+    serializer = ProjectSerializer(project)
+    return Response(Project.serialize_project(serializer, project_id), status=status.HTTP_202_ACCEPTED)
