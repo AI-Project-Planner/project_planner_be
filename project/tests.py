@@ -1,7 +1,6 @@
 from django.test import TestCase, Client
 from .models import Project
 from user.models import User
-import json, code
 
 class ProjectModelTest(TestCase):
     def setUp(self):
@@ -99,7 +98,7 @@ class ProjectModelTest(TestCase):
             "collaborators": 2
         }
 
-        response = c.post(f"/api/v1/users/-1/projects/", data=payload, content_type='application/json')
+        response = c.post("/api/v1/users/-1/projects/", data=payload, content_type='application/json')
         self.assertEqual(response.status_code, 404)
 
     def test_get_all_users_projects(self):
@@ -107,5 +106,5 @@ class ProjectModelTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_get_all_users_projects_user_not_found(self):
-        response = c.get(f"/api/v1/users/-1/projects/")
+        response = c.get("/api/v1/users/-1/projects/")
         self.assertEqual(response.status_code, 404)
