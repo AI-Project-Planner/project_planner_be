@@ -44,7 +44,7 @@ class Project(models.Model):
                         "saved": x.saved,
                         "tagline": f"{x.tagline}",
                         "collaborators": x.collaborators,
-                        "user_id": f"{x.user_id.id}"
+                        "user_id": x.user_id.id
                     }
             }
             array.append(z)
