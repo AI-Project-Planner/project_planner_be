@@ -13,7 +13,7 @@ class ProjectModelTest(TestCase):
 
     def test_project_model_exists(self):
         projects = Project.objects.count()
-        code.interact(local=dict(globals(), **locals()))
+
         self.assertEqual(projects, 2)
 
     def test_project_model_has_attributes(self):
