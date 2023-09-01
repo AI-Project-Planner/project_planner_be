@@ -447,10 +447,10 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-- Amy Marie Spears [![LinkedIn][linkedin-shield]][linkedin-url-as][![GitHub][github-shield]][github-url-as]
-- Michael Callahan [![LinkedIn][linkedin-shield]][linkedin-url-mc][![GitHub][github-shield]][github-url-mc]
-- Javen Wilson [![LinkedIn][linkedin-shield]][linkedin-url-jw][![GitHub][github-shield]][github-url-jw]
-- Garrett Gregor [![LinkedIn][linkedin-shield]][linkedin-url-gg][![GitHub][github-shield]][github-url-gg]
+- Amy Marie Spears [![LinkedIn][linkedin-shield]][linkedin-url-as] [![GitHub][github-shield]][github-url-as]
+- Michael Callahan [![LinkedIn][linkedin-shield]][linkedin-url-mc] [![GitHub][github-shield]][github-url-mc]
+- Javen Wilson [![LinkedIn][linkedin-shield]][linkedin-url-jw] [![GitHub][github-shield]][github-url-jw]
+- Garrett Gregor [![LinkedIn][linkedin-shield]][linkedin-url-gg] [![GitHub][github-shield]][github-url-gg]
 
 Project Link: [https://github.com/AI-Project-Planner/project_planner_be](https://github.com/AI-Project-Planner/project_planner_be)
 
@@ -460,12 +460,12 @@ Project Link: [https://github.com/AI-Project-Planner/project_planner_be](https:/
 ## Acknowledgments
 
 Our wonderful Front End Team!!
-- [Saki](https://github.com/mikedao)
-- [Laura](https://github.com/epintozzi)
-- [Fernando](https://github.com/epintozzi)
+- Saki [![GitHub][github-shield]][github-url-sc]
+- Laura [![GitHub][github-shield]][github-url-lg]
+- Fernando [![GitHub][github-shield]][github-url-fr]
 
 Our amazing instructors:
-- [Leta](https://github.com/epintozzi)
+- [Leta](https://github.com/letakeane)
 - [Erin Pintozzi](https://github.com/epintozzi)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -487,6 +487,9 @@ Our amazing instructors:
 [github-url-mc]: https://github.com/calforcal
 [github-url-jw]: https://github.com/javenb022
 [github-url-as]: https://github.com/amspears007
+[github-url-lg]: https://github.com/lauraguerra1
+[github-url-fr]: https://github.com/fernandorobles97
+[github-url-sc]: https://github.com/sakisandrac
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url-gg]: https://linkedin.com/in/garrett-gregor
 [linkedin-url-as]: https://linkedin.com/in/garrett-gregor
