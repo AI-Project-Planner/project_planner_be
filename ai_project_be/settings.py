@@ -48,8 +48,11 @@ ALLOWED_HOSTS = ["*"]
 # else:
 #     ALLOWED_HOSTS = []
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOWED_ORIGINS = ['*']
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    ]
 
 # Application definition
 
@@ -60,6 +63,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'user',
     'project',
     'rest_framework',
@@ -73,6 +77,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'ai_project_be.urls'
