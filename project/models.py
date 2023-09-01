@@ -7,6 +7,7 @@ class Project(models.Model):
     description = models.TextField(max_length=2000)
     features = models.TextField(max_length=2000)
     interactions = models.TextField(max_length=2000)
+    technologies = models.TextField(max_length=2000)
     colors = models.TextField(max_length=2000)
     timeline = models.CharField(max_length=6)
     timeline_int = models.PositiveSmallIntegerField(default=0)
@@ -38,6 +39,7 @@ class Project(models.Model):
                         "description": f"{x.description}",
                         "features": f"{x.features}",
                         "interactions": f"{x.interactions}",
+                        "technologies": f"{x.technologies}",
                         "colors": f"{x.colors}",
                         "timeline": f"{x.timeline}",
                         "timeline_int": x.timeline_int,
