@@ -40,11 +40,11 @@ class Project(models.Model):
                         "interactions": f"{x.interactions}",
                         "colors": f"{x.colors}",
                         "timeline": f"{x.timeline}",
-                        "timeline_int": f"{x.timeline_int}",
-                        "saved": f"{x.saved}",
+                        "timeline_int": x.timeline_int,
+                        "saved": x.saved,
                         "tagline": f"{x.tagline}",
-                        "collaborators": f"{x.collaborators}",
-                        "user_id": f"{x.user_id.id}"
+                        "collaborators": x.collaborators,
+                        "user_id": x.user_id.id
                     }
             }
             array.append(z)
