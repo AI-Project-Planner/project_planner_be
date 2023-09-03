@@ -123,8 +123,8 @@ class ProjectModelTest(TestCase):
             "collaborators": 10,
             "saved": "true",
             "user_id": 1,
-            "logo_url": "cool url",
-            "logo_font": "cool font",
+            "logo_url": "",
+            "logo_font": "",
         }
 
         response = c.put(f"/api/v1/users/{self.u.id}/projects/{self.p.id}/", data=payload, content_type='application/json')
