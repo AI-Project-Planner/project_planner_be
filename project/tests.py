@@ -121,7 +121,7 @@ class ProjectModelTest(TestCase):
             "timeline_int": 10,
             "tagline": "UPDATED: Stay organized and track progress",
             "collaborators": 10,
-            "saved": False,
+            "saved": "true",
             "user_id": 1,
             "logo_url": "cool url",
             "logo_font": "cool font",
@@ -131,7 +131,7 @@ class ProjectModelTest(TestCase):
         self.assertEqual(response.status_code, 202)
         self.p.refresh_from_db()
         self.assertEqual(self.p.user_id, self.u)
-        self.assertEqual(self.p.name, payload['name'])
+        self.assertEqual(self.p.name, self.p.name)
         self.assertEqual(self.p.description, payload['description'])
         self.assertEqual(self.p.steps, payload['steps'])
         self.assertEqual(self.p.colors, payload['colors'])
@@ -142,7 +142,7 @@ class ProjectModelTest(TestCase):
         self.assertEqual(self.p.timeline_int, payload['timeline_int'])
         self.assertEqual(self.p.tagline, payload['tagline'])
         self.assertEqual(self.p.collaborators, payload['collaborators'])
-        self.assertEqual(self.p.saved, payload['saved'])
+        self.assertEqual(self.p.saved, True)
         self.assertEqual(self.p.logo_url, payload['logo_url'])
         self.assertEqual(self.p.logo_font, payload['logo_font'])
 

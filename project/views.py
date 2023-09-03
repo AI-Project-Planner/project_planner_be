@@ -98,6 +98,11 @@ def update_project(request, user_id, project_id):
         return Response(response, status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'PUT':
+        if request.data['saved'] == "true":
+            request.data['saved'] = True
+        elif request.data['saved'] == "false":
+            request.data['saved'] = False
+            
         project_serializer = ProjectSerializer(project, data=request.data)
         if project_serializer.is_valid():
             project_serializer.save()
