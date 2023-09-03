@@ -153,3 +153,13 @@ class ProjectModelTest(TestCase):
     def test_get_all_users_projects_user_not_found(self):
         response = c.get("/api/v1/users/-1/projects/")
         self.assertEqual(response.status_code, 404)
+
+    def test_project_deletes(self):
+        self.assertEqual(Project.objects.count(), 2)
+        response = c.delete(f"/api/v1/users/{self.u.id}/projects/{self.p.id}/")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(Project.objects.count(), 1)
+
+    def test_project_doesnt_delete(self):
+        response = c.delete(f"/api/v1/users/{self.u.id}/projects/-1/")
+        self.assertEqual(response.status_code, 404)

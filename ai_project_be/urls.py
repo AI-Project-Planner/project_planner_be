@@ -25,7 +25,6 @@ urlpatterns = [
     path('api/v1/users/', user_views.generate_user),
     path('api/v1/users/<int:id>/', user_views.show_user),
     path('api/v1/users/<int:id>/projects/', project_views.generate_project),
-    # path('api/v1/users/<int:user_id>/projects/', project_views.all_users_projects),
     path('api/v1/users/<int:user_id>/projects/<int:project_id>/', project_views.update_project),
 ]
 

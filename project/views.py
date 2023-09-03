@@ -86,7 +86,7 @@ def generate_project(request, id):
         projects = Project.objects.all()
         return Response(Project.serialize_all_projects(projects), status=status.HTTP_200_OK)
 
-@api_view(['PUT', 'PATCH'])
+@api_view(['PUT', 'PATCH', 'DELETE'])
 def update_project(request, user_id, project_id):
     try:
         project = Project.objects.get(id=project_id)
@@ -120,3 +120,14 @@ def update_project(request, user_id, project_id):
         project.save()
         serializer = ProjectSerializer(project)
         return Response(Project.serialize_project(serializer, project_id), status=status.HTTP_202_ACCEPTED)
+    elif request.method == 'DELETE':
+        try:
+            project = Project.objects.get(id=project_id)
+            project.delete()
+            return Response({"messages": "Project with id " + str(project_id) + " was deleted."}, status=status.HTTP_200_OK)
+        except Project.DoesNotExist:
+            response = {
+                "Error": "Project ID not found",
+                "Status": 404
+            }
+        return Response(response, status=status.HTTP_404_NOT_FOUND)
