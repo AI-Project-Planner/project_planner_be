@@ -123,7 +123,7 @@ class ProjectModelTest(TestCase):
 
         response = c.put(f"/api/v1/users/{self.u.id}/projects/{self.p.id}/", data=payload, content_type='application/json')
         self.assertEqual(response.status_code, 202)
-        code.interact(local=dict(globals(), **locals()))
+        self.p.refresh_from_db()
         self.assertEqual(self.p.user_id, self.u)
         self.assertEqual(self.p.name, payload['name'])
         self.assertEqual(self.p.description, payload['description'])
