@@ -15,6 +15,8 @@ class Project(models.Model):
     tagline = models.TextField(max_length=2000)
     collaborators = models.PositiveSmallIntegerField(default=0)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    logo_url = models.TextField(max_length=2000)
+    logo_font = models.TextField(max_length=2000)
 
     def serialize_project(serializer, project_id):
         return {
@@ -46,7 +48,9 @@ class Project(models.Model):
                         "saved": x.saved,
                         "tagline": f"{x.tagline}",
                         "collaborators": x.collaborators,
-                        "user_id": x.user_id.id
+                        "user_id": x.user_id.id,
+                        "logo_url": x.logo_url,
+                        "logo_font": x.logo_font
                     }
             }
             array.append(z)
