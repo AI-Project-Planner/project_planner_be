@@ -31,6 +31,8 @@ class ProjectModelTest(TestCase):
         self.assertEqual(self.p.tagline, 'Best Concert Eva!!!')
         self.assertEqual(self.p.collaborators, 2)
         self.assertEqual(self.p.saved, False)
+        self.assertEqual(self.p.logo_url, "")
+        self.assertEqual(self.p.logo_font, "")
 
     def test_project_is_returned(self):
         payload = {
@@ -57,6 +59,8 @@ class ProjectModelTest(TestCase):
         self.assertContains(response, 'tagline')
         self.assertContains(response, 'timeline')
         self.assertContains(response, 'timeline_int')
+        self.assertContains(response, 'logo_url')
+        self.assertContains(response, 'logo_font')
 
     def test_project_is_not_returned(self):
         payload = {
@@ -118,7 +122,9 @@ class ProjectModelTest(TestCase):
             "tagline": "UPDATED: Stay organized and track progress",
             "collaborators": 10,
             "saved": False,
-            "user_id": 1
+            "user_id": 1,
+            "logo_url": "cool url",
+            "logo_font": "cool font",
         }
 
         response = c.put(f"/api/v1/users/{self.u.id}/projects/{self.p.id}/", data=payload, content_type='application/json')
@@ -137,6 +143,8 @@ class ProjectModelTest(TestCase):
         self.assertEqual(self.p.tagline, payload['tagline'])
         self.assertEqual(self.p.collaborators, payload['collaborators'])
         self.assertEqual(self.p.saved, payload['saved'])
+        self.assertEqual(self.p.logo_url, payload['logo_url'])
+        self.assertEqual(self.p.logo_font, payload['logo_font'])
 
     def test_get_all_users_projects(self):
         response = c.get(f"/api/v1/users/{self.u.id}/projects/")
