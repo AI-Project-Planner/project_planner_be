@@ -29,11 +29,11 @@
     <img src="images/logo.png" alt="Logo" width="280" height="250">
   </a>
 
-<h3 align="center">AI Project Planner</h3>
+<h2 align="center">AI Project Planner</h2>
 
   <p align="center">
     An api for users to generate everything needed for their next software development project!
-    <br />
+    <!-- <br />
     <a href="https://github.com/AI-Project-Planner/project_planner_be"><strong>Explore the docs »</strong></a>
     <br />
     <br />
@@ -42,11 +42,11 @@
     <a href="https://github.com/AI-Project-Planner/project_planner_be/issues">Report Bug</a>
     ·
     <a href="https://github.com/AI-Project-Planner/project_planner_be/issues">Request Feature</a>
-  </p>
+  </p> -->
 </div>
 
 <!-- TABLE OF CONTENTS -->
-<details>
+<!-- <details> -->
   <summary>Table of Contents</summary>
   <ol>
     <li>
@@ -76,7 +76,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Project Planner is designed to streamline the project planning process for junior to mid level developers. By leveraging advanced AI technology, this app assists users in crafting comprehensive project plans and generating innovative ideas tailored to their chosen project type and preferred technologies.
+Project Planner is designed to streamline the project planning process for junior to mid level developers. By leveraging advanced AI technology, this app assists users in crafting comprehensive project plans and generating innovative ideas tailored to their chosen project type and preferred technologies.<br>[Project Spec/Requirements](https://mod4.turing.edu/projects/capstone/)
 
 ![Project Planner Screenshot][giphy1]
 ![Project Planner Screenshot][giphy2]
@@ -84,7 +84,7 @@ Project Planner is designed to streamline the project planning process for junio
 
 
 
-[Project Spec/Requirements](https://mod4.turing.edu/projects/capstone/)
+
 
 ### Deployed UI
 - [Frontend Deployment]()
@@ -116,14 +116,16 @@ Ensure you have the following installed prior to installing the Project Planner 
 * Django-Admin 4.2.4
 * Postgresql 14
 * pip 23.2.1
-* Get an API Key and/or Application Keys at:
-    * [OpenAI API](https://openai.com/product)
+
 
 ### Installation
 
 Follow these steps to install the Project Planner App:
 
-<details close>
+<details close><br>
+
+1. Get an API Key and/or Application Keys at:
+    [OpenAI API](https://openai.com/product)
 
 1. Fork or clone a copy of this repo, then run the following commands from the project directory in your terminal:
 
@@ -305,6 +307,7 @@ PATCH /api/v1/users/:user_id/projects/:project_id/
 	"id": "1",
 	"type": "project",
 	"attributes": {
+    "user_id": 1,
 		"name": "TaskMaster Pro",
 		"steps": "Project Setup: Create Git repository and define project structure\nBackend Setup: Develop Express.js application, set up API routes\nDatabase Design: Design and implement database schema",
 		"description": "TaskMaster Pro is an all-inclusive task management application designed to optimize team collaboration and productivity.",
@@ -314,7 +317,10 @@ PATCH /api/v1/users/:user_id/projects/:project_id/
 		"saved": true,
 		"timeline": "week",
     "timeline_int": 1,
-		"user_id": "1"
+     "tagline": "Effortlessly manage and track tasks.",
+        "collaborators": 4,
+        "logo_url": "",
+        "logo_font": ""
 	}
 }
 ```
@@ -333,6 +339,73 @@ PATCH /api/v1/users/:user_id/projects/:project_id/
 ```
 
 </details>
+
+### Update Attribute for A Users Project
+
+<details close>
+
+```http
+PUT /api/v1/users/:user_id/projects/:project_id/
+```
+
+#### Parameters
+
+```
+:user_id => user_id
+:project_id => project_id
+```
+
+| Code | Description |
+| :--- | :---------- |
+| 202  | `ACCEPTED`        |
+
+#### Request Body
+
+```json
+{
+	"collaborators": 5,
+}
+```
+
+#### Example Response
+
+```json
+{
+	"id": "1",
+	"type": "project",
+	"attributes": {
+    "user_id": 1,
+		"name": "TaskMaster Pro",
+		"steps": "Project Setup: Create Git repository and define project structure\nBackend Setup: Develop Express.js application, set up API routes\nDatabase Design: Design and implement database schema",
+		"description": "TaskMaster Pro is an all-inclusive task management application designed to optimize team collaboration and productivity.",
+	  "features": "User registration and login\nCreate, assign, update, and track tasks\nReal-time collaboration and updates\nPriority-based task categorization",
+		"interactions": "User logs in to TaskMaster Pro account.\nDashboard displays tasks by priority: High, Medium, Low.\nUser adds a task, assigns it, and sets a due date.\nTask appears under the respective priority category.\nAssigned user starts task, status updates in real-time.\nUpon completion, task is marked as done and updates for all.",
+		"colors": "#3498DB\n#27AE60\n#F39C12\n#F0F3F4\n#333333\n#E74C3C",
+		"saved": true,
+		"timeline": "week",
+    "timeline_int": 1,
+     "tagline": "Effortlessly manage and track tasks.",
+        "collaborators": 5,
+        "logo_url": "",
+        "logo_font": ""
+	}
+}
+```
+
+##### Error Response
+
+| Code | Description |
+| :--- | :---------- |
+| 404  | `Project or User ID not found.` |
+
+```json
+	{
+		"Error": "Project or User ID not found.",
+		"Status": 404
+	}
+```
+</details>
+
 
 ### Get ALL of a Users Projects
 
@@ -363,22 +436,27 @@ GET /api/v1/users/:id/projects/
       "id": "1",
       "type": "project",
       "attributes": {
+        "user_id": 1,
         "name": "TaskMaster Pro",
         "steps": "Project Setup: Create Git repository and define project structure\nBackend Setup: Develop Express.js application, set up API routes\nDatabase Design: Design and implement database schema",
         "description": "TaskMaster Pro is an all-inclusive task management application designed to optimize team collaboration and productivity.",
         "features": "User registration and login\nCreate, assign, update, and track tasks\nReal-time collaboration and updates\nPriority-based task categorization",
         "interactions": "User logs in to TaskMaster Pro account.\nDashboard displays tasks by priority: High, Medium, Low.\nUser adds a task, assigns it, and sets a due date.\nTask appears under the respective priority category.\nAssigned user starts task, status updates in real-time.\nUpon completion, task is marked as done and updates for all.",
         "colors": "#3498DB\n#27AE60\n#F39C12\n#F0F3F4\n#333333\n#E74C3C",
-        "saved": true,
         "timeline": "week",
         "timeline_int": 1,
-        "user_id": "1"
+        "saved": true,
+        "tagline": "Effortlessly manage and track tasks.",
+        "collaborators": 4,
+        "logo_url": "",
+        "logo_font": ""
       }
     },
     {
       "id": "2",
       "type": "project",
       "attributes": {
+        "user_id": 1,
         "name": "Different Project Pro",
         "steps": "Project Setup: Create Git repository and define project structure\nBackend Setup: Develop Express.js application, set up API routes\nDatabase Design: Design and implement database schema",
         "description": "It's different!",
@@ -388,7 +466,10 @@ GET /api/v1/users/:id/projects/
         "saved": true,
         "timeline": "days",
         "timeline_int": 4,
-        "user_id": "1"
+        "tagline": "Manage and track tasks differently.",
+        "collaborators": 4,
+        "logo_url": "",
+        "logo_font": ""
       }
     }
   ]
@@ -409,12 +490,53 @@ Error Response:
 ```
 
 </details>
+
+### Delete A User's Project
+
+<details close>
+
+```http
+DELETE /api/v1/users/:user_id/projects/:project_id/
+```
+
+#### Parameters
+
+```
+:user_id => user_id
+:project_id => project_id
+```
+
+| Code | Description |
+| :--- | :---------- |
+| 200  | `SUCCESSFUL`        |
+
+
+
+#### Example Response
+
+```json
+{
+	"messages": "Project with id " {project_id} + " was deleted."
+}
+``````
+##### Error Response
+
+| Code | Description |
+| :--- | :---------- |
+| 404  | `Project or User ID not found.` |
+
+```json
+	{
+		"Error": "Project or User ID not found.",
+		"Status": 404
+	}
+```
 </details>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> 
 
 <!-- ROADMAP -->
-## Roadmap
+<!-- ## Roadmap
 
 - [ ] Logo Generation using DALL-E from OpenAI
 - [ ] Add update and delete functionality for projects
@@ -434,6 +556,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
+2. Follow Installation Instructions
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
