@@ -7,7 +7,14 @@ import json
 
 @api_view(['GET'])
 def show_user(request, id):
-    user = User.objects.get(id=id)
+    try:
+        user = User.objects.get(id=id)
+    except User.DoesNotExist:
+        response = {
+            "Error": "User ID not found",
+            "Status": 404
+        }
+        return Response(response, status=status.HTTP_404_NOT_FOUND)
     serializer = UserSerializer(user)
     return Response(User.serialize_user(serializer, user.id), status=status.HTTP_200_OK)
 
