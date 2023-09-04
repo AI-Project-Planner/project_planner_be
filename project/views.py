@@ -3,9 +3,8 @@ from user.models import User
 from .serializers import ProjectSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework.parsers import JSONParser
 from rest_framework import status
-import requests, json, os, code
+import requests, json, os
 
 @api_view(['GET', 'POST'])
 def generate_project(request, id):
@@ -13,7 +12,6 @@ def generate_project(request, id):
         # Find user
         try:
             user = User.objects.get(id=id)
-
         except User.DoesNotExist:
             response = {
                 "Error": "User ID not found",
@@ -66,7 +64,9 @@ def generate_project(request, id):
             # Serialize the project
             serializer = ProjectSerializer(project)
             return Response(Project.serialize_project(serializer, project.id), status=status.HTTP_200_OK)
-        else:
+
+        # Refactor opportunity: Can't test that the openapi server is down
+        else: # pragma: no cover
             response = {
                 "Error": "Server is Down",
                 "Status": 503
@@ -76,7 +76,7 @@ def generate_project(request, id):
     elif request.method == 'GET':
         try:
             User.objects.get(id=id)
-        except User.objects.DoesNotExist:
+        except User.DoesNotExist:
             response = {
                 "Error": "User ID not found",
                 "Status": 404
@@ -90,7 +90,14 @@ def generate_project(request, id):
 def update_project(request, user_id, project_id):
     try:
         project = Project.objects.get(id=project_id)
+        User.objects.get(id=user_id)
     except Project.DoesNotExist:
+        response = {
+            "Error": "Project or User ID not found",
+            "Status": 404
+        }
+        return Response(response, status=status.HTTP_404_NOT_FOUND)
+    except User.DoesNotExist:
         response = {
             "Error": "Project or User ID not found",
             "Status": 404
@@ -102,7 +109,7 @@ def update_project(request, user_id, project_id):
             request.data['saved'] = True
         elif request.data['saved'] == "false":
             request.data['saved'] = False
-            
+
         project_serializer = ProjectSerializer(project, data=request.data)
         if project_serializer.is_valid():
             project_serializer.save()
@@ -125,14 +132,8 @@ def update_project(request, user_id, project_id):
         project.save()
         serializer = ProjectSerializer(project)
         return Response(Project.serialize_project(serializer, project_id), status=status.HTTP_202_ACCEPTED)
+
     elif request.method == 'DELETE':
-        try:
-            project = Project.objects.get(id=project_id)
-            project.delete()
-            return Response({"messages": "Project with id " + str(project_id) + " was deleted."}, status=status.HTTP_200_OK)
-        except Project.DoesNotExist:
-            response = {
-                "Error": "Project ID not found",
-                "Status": 404
-            }
-        return Response(response, status=status.HTTP_404_NOT_FOUND)
+        project = Project.objects.get(id=project_id)
+        project.delete()
+        return Response({"messages": "Project with id " + str(project_id) + " was deleted."}, status=status.HTTP_200_OK)

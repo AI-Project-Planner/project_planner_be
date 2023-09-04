@@ -110,7 +110,7 @@ if IS_HEROKU_APP:
     # automatically by Heroku when a database addon is attached to your Heroku app. See:
     # https://devcenter.heroku.com/articles/provisioning-heroku-postgres
     # https://github.com/jazzband/dj-database-url
-    DATABASES = {
+    DATABASES = { # pragma: no cover
         "default": dj_database_url.config(
             default=os.environ['DATABASE_URL'],
             conn_max_age=600,
