@@ -26,7 +26,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/AI-Project-Planner/project_planner_be">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.png" alt="Logo" width="280" height="250">
   </a>
 
 <h3 align="center">AI Project Planner</h3>
@@ -76,9 +76,13 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-![Project Planner Screenshot][screenshot1]
 Project Planner is designed to streamline the project planning process for junior to mid level developers. By leveraging advanced AI technology, this app assists users in crafting comprehensive project plans and generating innovative ideas tailored to their chosen project type and preferred technologies.
+
+![Project Planner Screenshot][giphy1]
+![Project Planner Screenshot][giphy2]
+![Project Planner Screenshot][giphy3]
+
+
 
 [Project Spec/Requirements](https://mod4.turing.edu/projects/capstone/)
 
@@ -500,6 +504,9 @@ Our amazing instructors:
 [logo]: images/logo.png
 [unsplash]: images/project-planner.jpeg
 [inspo]: images/planner.png
+[giphy1]: images/project1.gif
+[giphy2]: images/project2.gif
+[giphy3]: images/project3.gif
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
