@@ -594,10 +594,9 @@ Project Link: [https://github.com/AI-Project-Planner/project_planner_be](https:/
 ## Acknowledgments
 
 Our wonderful Front End Team!!
-
-- Saki [![GitHub][github-shield]][github-url-sc]
-- Laura [![GitHub][github-shield]][github-url-lg]
-- Fernando [![GitHub][github-shield]][github-url-fr]
+- Saki Chatphatthanasiri [![GitHub][github-shield]][github-url-sc]
+- Laura Garcia Guerra [![GitHub][github-shield]][github-url-lg]
+- Fernando Robles [![GitHub][github-shield]][github-url-fr]
 
 Our amazing instructors:
 
