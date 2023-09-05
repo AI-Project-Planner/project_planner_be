@@ -23,22 +23,20 @@
 [![MIT License][license-shield]][license-url]
 
 <!-- PROJECT LOGO -->
-<br />
 <div align="center">
   <a href="https://github.com/AI-Project-Planner/project_planner_be">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.png" alt="Logo" width="280" height="250">
   </a>
 
-<h3 align="center">AI Project Planner</h3>
+<h2 align="center">AI Project Planner</h2>
 
   <p align="center">
     An api for users to generate everything needed for their next software development project!
-    <br />
-    <a href="https://github.com/AI-Project-Planner/project_planner_be"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/AI-Project-Planner/project_planner_be">View Demo</a>
-    ·
+    <br>
+    <!--<a href="https://github.com/AI-Project-Planner/project_planner_be"><strong>Explore the docs »</strong></a>-->
+    <!--<br>-->
+    <!--<a href="https://github.com/AI-Project-Planner/project_planner_be">View Demo</a>-->
+    <!--.-->
     <a href="https://github.com/AI-Project-Planner/project_planner_be/issues">Report Bug</a>
     ·
     <a href="https://github.com/AI-Project-Planner/project_planner_be/issues">Request Feature</a>
@@ -64,7 +62,7 @@
     </li>
     <li><a href="#usage">Usage</a></li>
       <ul>
-        <li><a href="#endpoints">Restful Endpoints</a></li>
+        <li><a href="#endpoints">Endpoints</a></li>
       </ul>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
@@ -77,13 +75,25 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Project Planner Screenshot][screenshot1]
-Project Planner is designed to streamline the project planning process for junior to mid level developers. By leveraging advanced AI technology, this app assists users in crafting comprehensive project plans and generating innovative ideas tailored to their chosen project type and preferred technologies.
+Project Planner is designed to streamline the project planning process for junior to mid level developers. By leveraging advanced AI technology, this app assists users in crafting comprehensive project plans and generating innovative ideas tailored to their chosen project type and preferred technologies.<br>[Project Spec/Requirements](https://mod4.turing.edu/projects/capstone/)
 
-[Project Spec/Requirements](https://mod4.turing.edu/projects/capstone/)
+<div align="center">
+  <a href="https://github.com/AI-Project-Planner/project_planner_be">
+    <img src="images/project1.gif" alt="project1" width="500" height="345">
+  </a>
+  <br>
+  <a href="https://github.com/AI-Project-Planner/project_planner_be">
+    <img src="images/project2.gif" alt="project2" width="500" height="345">
+  </a>
+  <br>
+  <a href="https://github.com/AI-Project-Planner/project_planner_be">
+    <img src="images/project3.gif" alt="project3" width="500" height="345">
+  </a>
+</div>
 
 ### Deployed UI
-- [Frontend Deployment]()
+
+- [Frontend Deployment](https://project-planner-ui.vercel.app/)
 - [Frontend Repository](https://github.com/AI-Project-Planner/project-planner-ui)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -108,18 +118,19 @@ Ensure you have the following installed prior to installing the Project Planner 
 
 ### Prerequisites
 
-* Python 3.11.4
-* Django-Admin 4.2.4
-* Postgresql 14
-* pip 23.2.1
-* Get an API Key and/or Application Keys at:
-    * [OpenAI API](https://openai.com/product)
+- Python 3.11.4
+- Django-Admin 4.2.4
+- Postgresql 14
+- pip 23.2.1
 
 ### Installation
 
 Follow these steps to install the Project Planner App:
 
 <details close>
+
+1. Get an API Key and/or Application Keys at:
+    [OpenAI API](https://openai.com/product)
 
 1. Fork or clone a copy of this repo, then run the following commands from the project directory in your terminal:
 
@@ -178,14 +189,13 @@ Follow these steps to install the Project Planner App:
     pip install < MISSING MODULE >
     ```
 
-
 1. Start the development server:
 
     ```zsh
     python3 manage.py runserver
     ```
 
-    1. The server should start running at http://127.0.0.1:8000/
+    1. The server should start running at <http://127.0.0.1:8000/>
 
 1. Enter your Keys in `.env`
 
@@ -201,9 +211,11 @@ Follow these steps to install the Project Planner App:
 ## Usage
 
 ### Endpoints
+
 <details close>
 
 ### Generate a Project
+
 <details close>
 
 ```http
@@ -224,10 +236,10 @@ POST /api/v1/users/:id/projects
 
 ```json
 {
-	"type": "frontend",
-	"technologies": "react, typescript and javascript",
-	"time": "1 week",
-	"collaborators": 2
+  "type": "frontend",
+  "technologies": "react, typescript and javascript",
+  "time": "1 week",
+  "collaborators": 2
 }
 ```
 
@@ -235,20 +247,20 @@ POST /api/v1/users/:id/projects
 
 ```json
 {
-	"id": "1",
-	"type": "project",
-	"attributes": {
-		"name": "TaskMaster Pro",
-		"steps": "Project Setup: Create Git repository and define project structure\nBackend Setup: Develop Express.js application, set up API routes\nDatabase Design: Design and implement database schema",
-		"description": "TaskMaster Pro is an all-inclusive task management application designed to optimize team collaboration and productivity.",
-	  "features": "User registration and login\nCreate, assign, update, and track tasks\nReal-time collaboration and updates\nPriority-based task categorization",
-		"interactions": "User logs in to TaskMaster Pro account.\nDashboard displays tasks by priority: High, Medium, Low.\nUser adds a task, assigns it, and sets a due date.\nTask appears under the respective priority category.\nAssigned user starts task, status updates in real-time.\nUpon completion, task is marked as done and updates for all.",
-		"colors": "#3498DB\n#27AE60\n#F39C12\n#F0F3F4\n#333333\n#E74C3C",
-		"saved": false,
-		"timeline": "week",
+  "id": "1",
+  "type": "project",
+  "attributes": {
+    "name": "TaskMaster Pro",
+    "steps": "Project Setup: Create Git repository and define project structure\nBackend Setup: Develop Express.js application, set up API routes\nDatabase Design: Design and implement database schema",
+    "description": "TaskMaster Pro is an all-inclusive task management application designed to optimize team collaboration and productivity.",
+    "features": "User registration and login\nCreate, assign, update, and track tasks\nReal-time collaboration and updates\nPriority-based task categorization",
+    "interactions": "User logs in to TaskMaster Pro account.\nDashboard displays tasks by priority: High, Medium, Low.\nUser adds a task, assigns it, and sets a due date.\nTask appears under the respective priority category.\nAssigned user starts task, status updates in real-time.\nUpon completion, task is marked as done and updates for all.",
+    "colors": "#3498DB\n#27AE60\n#F39C12\n#F0F3F4\n#333333\n#E74C3C",
+    "saved": false,
+    "timeline": "week",
     "timeline_int": 1,
-		"user_id": "1"
-	}
+    "user_id": "1"
+  }
 }
 ```
 
@@ -259,10 +271,10 @@ POST /api/v1/users/:id/projects
 | 503  | `Server is down.` |
 
 ```json
-	{
-		"Error": "Server is down.",
-		"Status": 500
-	}
+{
+  "Error": "Server is down.",
+  "Status": 500
+}
 ```
 
 </details>
@@ -290,7 +302,7 @@ PATCH /api/v1/users/:user_id/projects/:project_id/
 
 ```json
 {
-	"saved": "true"
+ "saved": "true"
 }
 ```
 
@@ -298,20 +310,24 @@ PATCH /api/v1/users/:user_id/projects/:project_id/
 
 ```json
 {
-	"id": "1",
-	"type": "project",
-	"attributes": {
-		"name": "TaskMaster Pro",
-		"steps": "Project Setup: Create Git repository and define project structure\nBackend Setup: Develop Express.js application, set up API routes\nDatabase Design: Design and implement database schema",
-		"description": "TaskMaster Pro is an all-inclusive task management application designed to optimize team collaboration and productivity.",
-	  "features": "User registration and login\nCreate, assign, update, and track tasks\nReal-time collaboration and updates\nPriority-based task categorization",
-		"interactions": "User logs in to TaskMaster Pro account.\nDashboard displays tasks by priority: High, Medium, Low.\nUser adds a task, assigns it, and sets a due date.\nTask appears under the respective priority category.\nAssigned user starts task, status updates in real-time.\nUpon completion, task is marked as done and updates for all.",
-		"colors": "#3498DB\n#27AE60\n#F39C12\n#F0F3F4\n#333333\n#E74C3C",
-		"saved": true,
-		"timeline": "week",
+ "id": "1",
+ "type": "project",
+ "attributes": {
+    "user_id": 1,
+  "name": "TaskMaster Pro",
+  "steps": "Project Setup: Create Git repository and define project structure\nBackend Setup: Develop Express.js application, set up API routes\nDatabase Design: Design and implement database schema",
+  "description": "TaskMaster Pro is an all-inclusive task management application designed to optimize team collaboration and productivity.",
+   "features": "User registration and login\nCreate, assign, update, and track tasks\nReal-time collaboration and updates\nPriority-based task categorization",
+  "interactions": "User logs in to TaskMaster Pro account.\nDashboard displays tasks by priority: High, Medium, Low.\nUser adds a task, assigns it, and sets a due date.\nTask appears under the respective priority category.\nAssigned user starts task, status updates in real-time.\nUpon completion, task is marked as done and updates for all.",
+  "colors": "#3498DB\n#27AE60\n#F39C12\n#F0F3F4\n#333333\n#E74C3C",
+  "saved": true,
+  "timeline": "week",
     "timeline_int": 1,
-		"user_id": "1"
-	}
+     "tagline": "Effortlessly manage and track tasks.",
+        "collaborators": 4,
+        "logo_url": "",
+        "logo_font": ""
+ }
 }
 ```
 
@@ -322,10 +338,77 @@ PATCH /api/v1/users/:user_id/projects/:project_id/
 | 404  | `Project or User ID not found.` |
 
 ```json
-	{
-		"Error": "Project or User ID not found.",
-		"Status": 404
-	}
+ {
+  "Error": "Project or User ID not found.",
+  "Status": 404
+ }
+```
+
+</details>
+
+### Update Attribute for A Users Project
+
+<details close>
+
+```http
+PUT /api/v1/users/:user_id/projects/:project_id/
+```
+
+#### Parameters
+
+```
+:user_id => user_id
+:project_id => project_id
+```
+
+| Code | Description |
+| :--- | :---------- |
+| 202  | `ACCEPTED`        |
+
+#### Request Body
+
+```json
+{
+ "collaborators": 5,
+}
+```
+
+#### Example Response
+
+```json
+{
+ "id": "1",
+ "type": "project",
+ "attributes": {
+    "user_id": 1,
+  "name": "TaskMaster Pro",
+  "steps": "Project Setup: Create Git repository and define project structure\nBackend Setup: Develop Express.js application, set up API routes\nDatabase Design: Design and implement database schema",
+  "description": "TaskMaster Pro is an all-inclusive task management application designed to optimize team collaboration and productivity.",
+   "features": "User registration and login\nCreate, assign, update, and track tasks\nReal-time collaboration and updates\nPriority-based task categorization",
+  "interactions": "User logs in to TaskMaster Pro account.\nDashboard displays tasks by priority: High, Medium, Low.\nUser adds a task, assigns it, and sets a due date.\nTask appears under the respective priority category.\nAssigned user starts task, status updates in real-time.\nUpon completion, task is marked as done and updates for all.",
+  "colors": "#3498DB\n#27AE60\n#F39C12\n#F0F3F4\n#333333\n#E74C3C",
+  "saved": true,
+  "timeline": "week",
+    "timeline_int": 1,
+     "tagline": "Effortlessly manage and track tasks.",
+        "collaborators": 5,
+        "logo_url": "",
+        "logo_font": ""
+ }
+}
+```
+
+##### Error Response
+
+| Code | Description |
+| :--- | :---------- |
+| 404  | `Project or User ID not found.` |
+
+```json
+ {
+  "Error": "Project or User ID not found.",
+  "Status": 404
+ }
 ```
 
 </details>
@@ -338,7 +421,7 @@ PATCH /api/v1/users/:user_id/projects/:project_id/
 GET /api/v1/users/:id/projects/
 ```
 
-#### Parameters:
+#### Parameters
 
 ```
 :id => user_id
@@ -348,8 +431,7 @@ GET /api/v1/users/:id/projects/
 | :--- | :---------- |
 | 200  | `OK`        |
 
-
-#### Example Response:
+#### Example Response
 
 ```json
 {
@@ -359,22 +441,27 @@ GET /api/v1/users/:id/projects/
       "id": "1",
       "type": "project",
       "attributes": {
+        "user_id": 1,
         "name": "TaskMaster Pro",
         "steps": "Project Setup: Create Git repository and define project structure\nBackend Setup: Develop Express.js application, set up API routes\nDatabase Design: Design and implement database schema",
         "description": "TaskMaster Pro is an all-inclusive task management application designed to optimize team collaboration and productivity.",
         "features": "User registration and login\nCreate, assign, update, and track tasks\nReal-time collaboration and updates\nPriority-based task categorization",
         "interactions": "User logs in to TaskMaster Pro account.\nDashboard displays tasks by priority: High, Medium, Low.\nUser adds a task, assigns it, and sets a due date.\nTask appears under the respective priority category.\nAssigned user starts task, status updates in real-time.\nUpon completion, task is marked as done and updates for all.",
         "colors": "#3498DB\n#27AE60\n#F39C12\n#F0F3F4\n#333333\n#E74C3C",
-        "saved": true,
         "timeline": "week",
         "timeline_int": 1,
-        "user_id": "1"
+        "saved": true,
+        "tagline": "Effortlessly manage and track tasks.",
+        "collaborators": 4,
+        "logo_url": "",
+        "logo_font": ""
       }
     },
     {
       "id": "2",
       "type": "project",
       "attributes": {
+        "user_id": 1,
         "name": "Different Project Pro",
         "steps": "Project Setup: Create Git repository and define project structure\nBackend Setup: Develop Express.js application, set up API routes\nDatabase Design: Design and implement database schema",
         "description": "It's different!",
@@ -384,7 +471,10 @@ GET /api/v1/users/:id/projects/
         "saved": true,
         "timeline": "days",
         "timeline_int": 4,
-        "user_id": "1"
+        "tagline": "Manage and track tasks differently.",
+        "collaborators": 4,
+        "logo_url": "",
+        "logo_font": ""
       }
     }
   ]
@@ -405,6 +495,49 @@ Error Response:
 ```
 
 </details>
+
+### Delete A User's Project
+
+<details close>
+
+```http
+DELETE /api/v1/users/:user_id/projects/:project_id/
+```
+
+#### Parameters
+
+```
+:user_id => user_id
+:project_id => project_id
+```
+
+| Code | Description |
+| :--- | :---------- |
+| 200  | `SUCCESSFUL`        |
+
+#### Example Response
+
+```json
+{
+ "messages": "Project with id " {project_id} + " was deleted."
+}
+```
+
+##### Error Response
+
+| Code | Description |
+| :--- | :---------- |
+| 404  | `Project or User ID not found.` |
+
+```json
+{
+  "Error": "Project or User ID not found.",
+  "Status": 404
+}
+```
+
+</details>
+</details>
 </details>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -412,9 +545,9 @@ Error Response:
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Logo Generation using DALL-E from OpenAI
-- [ ] Add update and delete functionality for projects
-- [ ] Add an endpoint to GET all users
+- [x] Add update and delete functionality for projects
+- [x] Add an endpoint to GET all users
+- [ ] Logo Generation using AI
 - [ ] Allow users to login using Oauth through Github
 
 See the [open issues](https://github.com/AI-Project-Planner/project_planner_be/issues) for a full list of proposed features (and known issues).
@@ -430,10 +563,11 @@ If you have a suggestion that would make this better, please fork the repo and c
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Follow Installation Instructions
+1. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+1. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+1. Push to the Branch (`git push origin feature/AmazingFeature`)
+1. Open a Pull Request
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -460,11 +594,13 @@ Project Link: [https://github.com/AI-Project-Planner/project_planner_be](https:/
 ## Acknowledgments
 
 Our wonderful Front End Team!!
+
 - Saki [![GitHub][github-shield]][github-url-sc]
 - Laura [![GitHub][github-shield]][github-url-lg]
 - Fernando [![GitHub][github-shield]][github-url-fr]
 
 Our amazing instructors:
+
 - [Leta](https://github.com/letakeane)
 - [Erin Pintozzi](https://github.com/epintozzi)
 
@@ -495,26 +631,3 @@ Our amazing instructors:
 [linkedin-url-as]: https://linkedin.com/in/garrett-gregor
 [linkedin-url-mc]: https://linkedin.com/in/garrett-gregor
 [linkedin-url-jw]: https://linkedin.com/in/garrett-gregor
-[screenshot1]: images/screenshot.png
-[screenshot2]: images/schreenshot2.png
-[logo]: images/logo.png
-[unsplash]: images/project-planner.jpeg
-[inspo]: images/planner.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com
-[Postgresql.com]: https://www.postgresql.org/
-[Postrgresql-url]: https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white
