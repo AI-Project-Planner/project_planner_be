@@ -627,6 +627,6 @@ Our amazing instructors:
 [github-url-sc]: https://github.com/sakisandrac
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url-gg]: https://linkedin.com/in/garrett-gregor
-[linkedin-url-as]: https://linkedin.com/in/garrett-gregor
-[linkedin-url-mc]: https://linkedin.com/in/garrett-gregor
-[linkedin-url-jw]: https://linkedin.com/in/garrett-gregor
+[linkedin-url-as]: https://www.linkedin.com/in/amy-marie-spears-900997105/
+[linkedin-url-mc]: https://www.linkedin.com/in/michaelcallahanjr/
+[linkedin-url-jw]: https://www.linkedin.com/in/javen-wilson/
