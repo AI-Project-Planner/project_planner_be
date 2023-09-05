@@ -594,10 +594,9 @@ Project Link: [https://github.com/AI-Project-Planner/project_planner_be](https:/
 ## Acknowledgments
 
 Our wonderful Front End Team!!
-
-- Saki [![GitHub][github-shield]][github-url-sc]
-- Laura [![GitHub][github-shield]][github-url-lg]
-- Fernando [![GitHub][github-shield]][github-url-fr]
+- Saki Chatphatthanasiri [![GitHub][github-shield]][github-url-sc]
+- Laura Garcia Guerra [![GitHub][github-shield]][github-url-lg]
+- Fernando Robles [![GitHub][github-shield]][github-url-fr]
 
 Our amazing instructors:
 
@@ -628,6 +627,6 @@ Our amazing instructors:
 [github-url-sc]: https://github.com/sakisandrac
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url-gg]: https://linkedin.com/in/garrett-gregor
-[linkedin-url-as]: https://linkedin.com/in/garrett-gregor
-[linkedin-url-mc]: https://linkedin.com/in/garrett-gregor
-[linkedin-url-jw]: https://linkedin.com/in/garrett-gregor
+[linkedin-url-as]: https://www.linkedin.com/in/amy-marie-spears-900997105/
+[linkedin-url-mc]: https://www.linkedin.com/in/michaelcallahanjr/
+[linkedin-url-jw]: https://www.linkedin.com/in/javen-wilson/
