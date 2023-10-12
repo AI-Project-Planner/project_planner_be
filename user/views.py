@@ -32,11 +32,12 @@ def find_or_create_user(request):
     parsed_request = json.loads(request.body)
     name = parsed_request['name']
     email = parsed_request['email']
+    auth_token = parsed_request['auth_token']
 
     try:
-      user = User.objects.get(email=email)
+      user = User.objects.get(auth_token=auth_token)
     except User.DoesNotExist:
-      user = User.objects.create(name=name, email=email)
+      user = User.objects.create(name=name, email=email, auth_token=auth_token)
       serializer = UserSerializer(user)
       return Response(User.serialize_user(serializer, user.id), status=status.HTTP_201_CREATED)
 
